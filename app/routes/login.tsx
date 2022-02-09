@@ -1,5 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "remix";
 import { Form, json, useLoaderData } from "remix";
+
 import { auth, sessionStorage } from "~/auth.server";
 
 type LoaderData = {
@@ -9,7 +10,7 @@ type LoaderData = {
 export const action: ActionFunction = async ({ request }) => {
   await auth.authenticate("form", request, {
     successRedirect: "/private",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
   });
 };
 
